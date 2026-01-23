@@ -53,7 +53,7 @@ A FastAPI **Gateway Service** sits in front of a **Flaky Backend** and applies r
   "rate_limit_allowed": 5,
   "rate_limit_blocked": 10
 }
----
+
 ## 🐳 Deployment & Testing
 
 **Run:**
