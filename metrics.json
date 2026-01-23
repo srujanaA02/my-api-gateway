@@ -1,0 +1,6 @@
+{
+    "circuit_breaker_state": "OPEN",
+    "total_retries": 6,
+    "rate_limit_allowed": 5,
+    "rate_limit_blocked": 10
+}
