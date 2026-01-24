@@ -34,22 +34,14 @@ Responsibilities:
   * Random latency / timeouts
 
 ---
-
-## 🧩 Architecture Diagram (Mermaid)
-
-> ✅ GitHub-friendly Mermaid (no HTML tags)
-
-```mermaid
 flowchart LR
-    Client[Client] --> Gateway[API Gateway (FastAPI)]
-    Gateway --> Backend[Flaky Backend (FastAPI)]
+    Client[Client] --> Gateway[API Gateway - FastAPI]
+    Gateway --> Backend[Flaky Backend - FastAPI]
 
     Gateway --> RL[Rate Limiting]
     Gateway --> CB[Circuit Breaker]
-    Gateway --> Retry[Retry + Exponential Backoff]
+    Gateway --> RT[Retry + Exponential Backoff]
     Gateway --> OBS[Health + Metrics]
-```
-
 ---
 
 ## 🔁 Request Flow (End-to-End)
