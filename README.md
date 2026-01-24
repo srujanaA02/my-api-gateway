@@ -192,6 +192,103 @@ docker-compose exec gateway pytest tests -v
 ```bash
 ./verify.sh
 ```
+---
+
+## 🧪 Test Circuit Breaker States (OPEN → HALF_OPEN → CLOSED)
+
+### ✅ 1) Stop backend to force failures
+
+```bash
+docker-compose stop flaky_backend
+```
+
+### ✅ 2) Spam requests to trip the breaker (make it OPEN)
+
+```bash
+for i in {1..15}; do curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8000/api/v1/data; done
+```
+
+### ✅ 3) Check metrics (should show OPEN)
+
+```bash
+curl -s http://localhost:8000/metrics | python -m json.tool
+```
+
+Expected:
+
+```json
+{
+  "circuit_breaker_state": "OPEN"
+}
+```
+
+---
+
+## ⏳ 4) Wait for HALF_OPEN (very important)
+
+👉 Your config is:
+
+* `RECOVERY_TIMEOUT_SECONDS=10`
+
+So wait **10 seconds**:
+
+```bash
+sleep 10
+```
+
+---
+
+## ✅ 5) Start backend again (so trial request can succeed)
+
+```bash
+docker-compose start flaky_backend
+```
+
+---
+
+## ✅ 6) Send ONE request (this triggers HALF_OPEN trial)
+
+```bash
+curl -i http://localhost:8000/api/v1/data
+```
+
+---
+
+## ✅ 7) Check metrics again
+
+```bash
+curl -s http://localhost:8000/metrics | python -m json.tool
+```
+
+### ✅ Expected behavior:
+
+* If trial request ✅ succeeds → breaker becomes **CLOSED**
+* If trial request ❌ fails → breaker becomes **OPEN** again
+
+---
+
+## ⭐ Optional: Quick full automation (one command block)
+
+```bash
+docker-compose stop flaky_backend
+
+for i in {1..15}; do
+  curl -s -o /dev/null -w "%{http_code}\n" http://localhost:8000/api/v1/data
+done
+
+curl -s http://localhost:8000/metrics | python -m json.tool
+
+sleep 10
+
+docker-compose start flaky_backend
+
+curl -i http://localhost:8000/api/v1/data
+
+curl -s http://localhost:8000/metrics | python -m json.tool
+```
+
+---
+
 
 ### 9️⃣ Stop Services
 
