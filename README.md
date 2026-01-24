@@ -24,6 +24,7 @@ Install dependencies from `requirements.txt`:
 pip install -r gateway_service/requirements.txt
 pip install -r flaky_service/requirements.txt
 
+---
 
 ## 🏗️ Architecture
 The solution consists of two containerized services:
