@@ -91,6 +91,21 @@ All parameters are configurable via environment variables (`.env`):
 
 ---
 
+## ⚙️ Environment Variables
+
+Create a `.env` file in the project root (you can copy from `.env.example`) and add the following:
+
+```env
+FLAKY_SERVICE_URL=http://flaky_backend:8001/flaky-data
+FAILURE_THRESHOLD=1
+RECOVERY_TIMEOUT_SECONDS=10
+TEST_REQUESTS_ALLOWED_HALF_OPEN=1
+MAX_RETRIES=3
+INITIAL_BACKOFF_SECONDS=0.5
+BACKOFF_MULTIPLIER=2
+RATE_LIMIT_REQUESTS_PER_WINDOW=100
+RATE_LIMIT_WINDOW_SECONDS=60
+````
 ## 🔧 Setup & Run
 
 ### 1️⃣ Clone the Repository
