@@ -229,21 +229,67 @@ It transitions through **three states**:
 ---
 
 ## 📂 Project Structure
+Sure ✅ Here is your **complete project structure** (clean + organized view) for `my-api-gateway` based on your `find . -print` output:
+
+---
+
+## ✅ Project Structure (Tree Format)
 
 ```bash
 my-api-gateway/
-├── gateway_service/
-│   ├── src/
-│   ├── tests/
-│   ├── requirements.txt
-│   └── Dockerfile
-├── flaky_service/
-│   ├── src/
-│   ├── requirements.txt
-│   └── Dockerfile
+│
+├── .env
+├── .env.example
+├── .gitignore
+├── ARCHITECTURE.md
 ├── docker-compose.yml
-├── verify.sh
 ├── metrics.json
-└── README.md
+├── README.md
+├── verify.sh
+│
+├── flaky_service/
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── src/
+│       ├── app.py
+│       └── __pycache__/
+│           └── app.cpython-312.pyc
+│
+└── gateway_service/
+    ├── Dockerfile
+    ├── requirements.txt
+    ├── src/
+    │   ├── __init__.py
+    │   ├── config.py
+    │   ├── main.py
+    │   ├── metrics.py
+    │   │
+    │   ├── api/
+    │   │   ├── __init__.py
+    │   │   └── v1/
+    │   │       ├── __init__.py
+    │   │       └── data.py
+    │   │
+    │   ├── middlewares/
+    │   │   ├── __init__.py
+    │   │   └── rate_limiter.py
+    │   │
+    │   └── resilience/
+    │       ├── __init__.py
+    │       ├── circuit_breaker.py
+    │       ├── retry.py
+    │       └── __pycache__/   (if generated)
+    │
+    └── tests/
+        ├── integration/
+        │   └── test_gateway_flow_integration.py
+        └── unit/
+            ├── test_circuit_breaker.py
+            ├── test_gateway_flow_unit.py
+            ├── test_rate_limiter.py
+            └── test_retry.py
 ```
+
+---
+
 
