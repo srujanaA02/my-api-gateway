@@ -292,4 +292,7 @@ my-api-gateway/
 
 ---
 
+## ✅ Verification Screenshot
+
+![Verify Script Output](docs/images/verify.png)
 
