@@ -54,6 +54,8 @@ A FastAPI **Gateway Service** sits in front of a **Flaky Backend** and applies r
   "rate_limit_blocked": 10
 }
 
+---
+
 ## 🐳 Deployment & Testing
 
 **Run:**
@@ -69,3 +71,5 @@ docker-compose up --build -d
 **Run All Tests:**
 ```bash
 docker-compose exec gateway pytest tests -v
+
+---
