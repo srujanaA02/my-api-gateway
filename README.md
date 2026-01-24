@@ -58,16 +58,15 @@ The solution consists of two containerized services:
 
 ### 📌 Diagram
 
-```mermaid
 flowchart LR
-    C[Client] --> G[API Gateway<br/>(FastAPI)]
-    G --> B[Flaky Backend<br/>(FastAPI)]
+    C[Client] --> G[API Gateway (FastAPI)]
+    G --> B[Flaky Backend (FastAPI)]
 
     G --> CB[Circuit Breaker]
     G --> RT[Retry + Exponential Backoff]
     G --> RL[Rate Limiting]
-    G --> OBS[/health + /metrics]
-```
+    G --> OBS[Health + Metrics]
+
 
 ---
 
