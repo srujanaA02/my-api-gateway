@@ -12,16 +12,18 @@ The gateway applies advanced **resilience patterns** to ensure stability and fau
 This project simulates real‑world scenarios where resilience is critical for cloud‑native and microservices architectures.
 
 ---
-## 🛠️ Requirements 
-To run this project locally (without Docker), you need: 
-- Python 3.11+ 
-- Pip (Python package manager) 
-Install dependencies from `requirements.txt`: 
-```bash 
-pip install -r gateway_service/requirements.txt 
+## 🛠️ Requirements
+To run this project locally (without Docker), you need:
+
+- Python 3.11+
+- Pip (Python package manager)
+
+Install dependencies from `requirements.txt`:
+
+```bash
+pip install -r gateway_service/requirements.txt
 pip install -r flaky_service/requirements.txt
 
----
 
 ## 🏗️ Architecture
 The solution consists of two containerized services:
